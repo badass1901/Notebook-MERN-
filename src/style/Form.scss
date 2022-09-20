@@ -5,8 +5,7 @@
   &:focus-within {
     border: 1px solid rgb(0, 119, 255);
     div {
-      
-      width:max-content;
+      width: max-content;
       padding: 0 2% 0 2%;
       display: flex;
       justify-content: center;
@@ -15,11 +14,10 @@
 
       transition: all 0.1s linear;
       font-size: 14px !important;
-      label{
+      label {
         width: calc(100% + 40px);
-        
+
         text-align: center;
-       
       }
     }
   }
