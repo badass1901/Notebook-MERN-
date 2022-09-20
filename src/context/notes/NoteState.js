@@ -11,7 +11,7 @@ const NoteState = (props) => {
     setTimeout(() => {
       setState({
         name: "Diya",
-        age: "20",
+        age: "22",
       });
     }, 1000);
   };
