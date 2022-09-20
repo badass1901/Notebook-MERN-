@@ -5,17 +5,17 @@ const Navbar = () => {
   return (
     <>
       {/* <!-- Navbar --> */}
-      <nav class="navbar navbar-expand-lg bg-info navbar-dark ">
+      <nav className="navbar navbar-expand-lg bg-dark navbar-dark ">
         {/* <!-- Container wrapper --> */}
-        <div class="container-fluid">
+        <div className="container-fluid">
           {/* <!-- Navbar brand --> */}
-          <Link class="navbar-brand" to="/">
+          <Link className="navbar-brand" to="/">
             Brand
           </Link>
 
           {/* <!-- Toggle button --> */}
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-mdb-toggle="collapse"
             data-mdb-target="#navbarSupportedContent"
@@ -23,36 +23,36 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </button>
 
           {/* <!-- Collapsible wrapper --> */}
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {/* 
         <!-- Link --> */}
-              <li class="nav-item">
-                <Link class="nav-link" to="/about">
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
                   About
                 </Link>
               </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
                   Home
                 </Link>
               </li>
             </ul>
 
             {/* <!-- Icons --> */}
-            <ul class="navbar-nav d-flex flex-row me-1">
-              <li class="nav-item me-3 me-lg-0">
-                <Link class="nav-link" to="#">
-                  <i class="fas fa-shopping-cart"></i>
+            <ul className="navbar-nav d-flex flex-row me-1">
+              <li className="nav-item me-3 me-lg-0">
+                <Link className="nav-link" to="#">
+                  <i className="fas fa-shopping-cart"></i>
                 </Link>
               </li>
-              <li class="nav-item me-3 me-lg-0">
-                <Link class="nav-link" to="#">
-                  <i class="fab fa-twitter"></i>
+              <li className="nav-item me-3 me-lg-0">
+                <Link className="nav-link" to="#">
+                  <i className="fab fa-twitter"></i>
                 </Link>
               </li>
             </ul>
