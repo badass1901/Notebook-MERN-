@@ -8,9 +8,9 @@ const Form = () => {
         {/* <!-- Name input --> */}
         <div className="form-outline formDiv mb-4">
           <input type="text" id="typeText" className="form-control" />
-          <label className="form-label" htmlFor="typeText">
-            Name
-          </label>
+          <div className="form-label" htmlFor="typeText">
+           <label>Name</label> 
+          </div>
         </div>
 
         {/* <!-- Message input --> */}
@@ -20,9 +20,9 @@ const Form = () => {
             id="form4Example3"
             rows="4"
           ></textarea>
-          <label className="form-label" htmlFor="form4Example3">
-            Message
-          </label>
+          <div className="form-label" htmlFor="form4Example3">
+           <label>Message</label> 
+          </div>
         </div>
 
         {/* <!-- Checkbox --> */}

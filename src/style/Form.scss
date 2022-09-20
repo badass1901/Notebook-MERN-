@@ -4,11 +4,23 @@
 
   &:focus-within {
     border: 1px solid rgb(0, 119, 255);
-    label {
+    div {
+      
+      width:max-content;
+      padding: 0 2% 0 2%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: white;
-      min-width: fit-content;
+
       transition: all 0.1s linear;
       font-size: 14px !important;
+      label{
+        width: calc(100% + 40px);
+        
+        text-align: center;
+       
+      }
     }
   }
 }
