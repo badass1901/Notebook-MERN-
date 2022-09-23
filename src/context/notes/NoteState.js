@@ -52,18 +52,18 @@ const NoteState = (props) => {
   const [notes, setNotes] = useState(notesInitial);
 
   // Add a new note
-  const addNote = (titl, description, tag) => {
+  const addNote = (title, description, tag) => {
     const note = {
       _id: "6325f875e6f1443e9ea4a796",
       user: "6325f76c185e7b9c5dfa881d",
-      title: titl,
+      title: title,
       description: description,
       tag: tag,
       date: "2022-09-17T16:40:21.825Z",
       __v: 0,
     };
     setNotes(notes.concat(note));
-    console.log("added notes", titl, description);
+  
   };
   // Delete a note
   const deleteNote = () => {};
