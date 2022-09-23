@@ -3,13 +3,13 @@ import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 const Notes = () => {
   const context = useContext(NoteContext);
-  const { notes, setNotes } = context;
+  const { notes } = context;
   return (
     <div className="container">
       <h2 className="my-3">Your Notes</h2>
       <div className="row p-4">
-        {notes.map((notes) => {
-          return <NoteItem notes={notes} />;
+        {notes.map((note) => {
+          return <NoteItem notes={note} key={note._id} />;
         })}
       </div>
     </div>

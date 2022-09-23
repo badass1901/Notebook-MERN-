@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import NoteState from "./context/notes/NoteState";
 import About from "./pages/About";
@@ -10,6 +11,7 @@ function App() {
       <NoteState>
         <BrowserRouter>
           <Navbar />
+          <Alert message="jello" />
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />}></Route>
