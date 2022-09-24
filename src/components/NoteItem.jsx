@@ -8,7 +8,8 @@ const NoteItem = (props) => {
         <div className="card-body">
           <h5 className="card-title">{notes.title}</h5>
           <p className="card-text">{notes.description}</p>
-          <div className="d-flex flex-row justify-content-between">
+          <small className="card-text"><i>{notes.tag}</i></small>
+          <div className="d-flex flex-row justify-content-between mt-2">
             <i className="far fa-trash-alt" />
             <i className="far fa-edit" />
           </div>

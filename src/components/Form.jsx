@@ -11,35 +11,19 @@ const Form = () => {
     description: "",
     tag: "default",
   });
-  const [title2, setTitle2] = useState({
-    title2: "",
-  });
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
-    
   };
-
-  const titleChg = (e) => {
-    setTitle2({[e.target.name]: e.target.value})
-    console.log(title2)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addNote(note.title, note.description, note.tag);
-    console.log()
-  }
-
   const handleClick = (e) => {
     e.preventDefault();
-    addNote(note.title, note.description, note.tag);
+    addNote(note.titl, note.description, note.tag);
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* <!-- Name input --> */}
         <div className="form-outline formDiv mb-4">
-          <input onChange={titleChg} name="title" type="text" id="title" className="form-control" />
+          <input name="titl" type="text" id="title" className="form-control" />
           <div className="form-label" htmlFor="typeText">
             <label>Title</label>
           </div>
@@ -73,7 +57,7 @@ const Form = () => {
         {/* <!-- Submit button --> */}
         <button
           type="submit"
-          // onClick={handleClick}
+          onClick={handleClick}
           className="btn btn-primary btn mb-4"
         >
           Send
