@@ -54,7 +54,7 @@ const NoteState = (props) => {
   // Add a new note
   const addNote = (title, description, tag) => {
     const note = {
-      _id: "6325f875e6f1443e9ea4a796",
+      _id: "6325f875e6f1443e9ea4a796" + 1,
       user: "6325f76c185e7b9c5dfa881d",
       title: title,
       description: description,
@@ -63,13 +63,27 @@ const NoteState = (props) => {
       __v: 0,
     };
     setNotes(notes.concat(note));
-  
   };
   // Delete a note
-  const deleteNote = () => {};
+  const deleteNote = (id, note) => {
+    console.log("Deleting with id" + id);
+    const newNotes = notes.filter((note) => {
+      return note._id !== id;
+    });
+    setNotes(newNotes);
+  };
   // Edit note
 
-  const editNote = () => {};
+  const editNote = (id, title, description, tag) => {
+    for (let index = 0; index < notes.length; index++) {
+      const element = notes[index];
+      if (element._id === id) {
+        element.title = title;
+        element.description = description;
+        element.tag = tag;
+      }
+    }
+  };
 
   return (
     <NoteContext.Provider
