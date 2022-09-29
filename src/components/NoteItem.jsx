@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import noteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
   const context = useContext(noteContext);
   const { deleteNote } = context;
-  const { notes } = props;
+  const { notes, updateNote } = props;
   return (
     <div className="col-md-3 mb-3">
       <div className="card">
@@ -21,7 +21,12 @@ const NoteItem = (props) => {
                 deleteNote(notes._id);
               }}
             />
-            <i className="far fa-edit" />
+            <i
+              className="far fa-edit"
+              onClick={() => {
+                updateNote(notes);
+              }}
+            />
           </div>
         </div>
       </div>
