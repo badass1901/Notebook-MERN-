@@ -34,6 +34,8 @@ const Form = () => {
           className="my-4"
           value={note.title}
           id="title"
+          minLength={5}
+          required
           onChange={onChange}
         />
         <MDBInput
@@ -44,6 +46,7 @@ const Form = () => {
           id="tag"
           className="mb-4"
           onChange={onChange}
+          required
         />
         <MDBTextArea
           onChange={onChange}
@@ -53,11 +56,17 @@ const Form = () => {
           value={note.description}
           id="description"
           rows="4"
+          required
         />
 
         <button
           type="submit"
           onClick={handleClick}
+          disabled={
+            note.title.length < 5 ||
+            note.tag.length < 5 ||
+            note.description.length < 5
+          }
           className="btn btn-primary btn-block mb-4"
         >
           Add Note

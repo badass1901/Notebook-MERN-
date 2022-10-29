@@ -90,6 +90,7 @@ const Notes = () => {
                   id="etag"
                   className="mb-4"
                   onChange={onChange}
+                  required
                 />
                 <MDBTextArea
                   onChange={onChange}
@@ -99,6 +100,7 @@ const Notes = () => {
                   value={note.edescription}
                   id="edescription"
                   rows="4"
+                  required
                 />
 
                 {/* <button
@@ -114,7 +116,15 @@ const Notes = () => {
               <button className="btn btn-danger" onClick={toggleShow}>
                 Close
               </button>
-              <button className="btn btn-success" onClick={handleClick}>
+              <button
+                className="btn btn-success"
+                disabled={
+                  note.etitle.length < 5 ||
+                  note.edescription.length < 5 ||
+                  note.etag.length < 5
+                }
+                onClick={handleClick}
+              >
                 Update Notes
               </button>
             </MDBModalFooter>
@@ -123,6 +133,7 @@ const Notes = () => {
       </MDBModal>
       <div>
         <h2 className="my-3">Your Notes</h2>
+        <i>{notes.length === 0 && "No notes to display"}</i>
         <div className="row p-4">
           {notes.map((note) => {
             return (
