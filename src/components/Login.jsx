@@ -1,44 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MDBRow,
   MDBCol,
   MDBInput,
   MDBCheckbox,
-  MDBBtn,
-  MDBIcon,
   MDBTabs,
   MDBTabsItem,
   MDBTabsLink,
   MDBTabsContent,
   MDBTabsPane,
 } from "mdb-react-ui-kit";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  // States
   const [loginRegisterActive, setLoginRegisterActive] = useState("login");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: "",
+    rEmail: "",
+    rPassword: "",
+    rRepeatPassword: "",
+    rName: "",
+  });
+  let navigate = useNavigate();
 
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
   const handleLoginRegisterClick = (parameter) => {
     setLoginRegisterActive(parameter);
   };
-  const handleRegister = () => {};
+
+  const host = "http://localhost:5000";
+
+  // Login Here
   const handleSubmit = async (e) => {
-    const host = "http://localhost:5000";
     e.preventDefault();
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(email, password),
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password,
+      }),
     });
     const json = await response.json();
     console.log(json);
-    // console.log(email, password);
+    console.log(credentials.email, credentials.password);
+    let err = json.error;
+    if (json.success) {
+      // save the auth token and redirect
+      localStorage.setItem("token", json.authtoken);
+      navigate("/");
+    } else {
+      alert(err);
+    }
+  };
+
+  // Register HERE
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch(`${host}/api/auth/createuser`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: credentials.rName,
+        email: credentials.rEmail,
+        password: credentials.rPassword,
+      }),
+    });
+
+    const json = await response.json();
+    console.log(json);
+    console.log(credentials.rName, credentials.rEmail, credentials.rPassword);
+    let err = json.error;
+    if (json.success) {
+      // save the auth token and redirect
+      localStorage.setItem("token", json.authtoken);
+      navigate("/");
+    } else {
+      alert(err);
+    }
   };
   return (
-    <div className="container card w-50 p-2 mt-4">
+    <div className="container card w-75 mt-5">
       <div className="card-body">
         <MDBTabs pills justify className="mb-3">
           <MDBTabsItem>
@@ -62,32 +114,10 @@ const Login = () => {
         <MDBTabsContent>
           <MDBTabsPane show={loginRegisterActive === "login"}>
             <form onSubmit={handleSubmit}>
-              <div className="text-center mb-3">
-                <p>Continue with</p>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="facebook-f" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="google" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="twitter" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="github" />
-                </MDBBtn>
-              </div>
-
-              <p className="text-center">or:</p>
-
               <MDBInput
                 className="mb-4"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
+                onChange={onChange}
+                value={credentials.email}
                 type="email"
                 name="email"
                 id="form7Example1"
@@ -95,9 +125,9 @@ const Login = () => {
               />
               <MDBInput
                 className="mb-4"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={onChange}
                 type="password"
-                value={password}
+                value={credentials.password}
                 name="password"
                 id="form7Example2"
                 label="Password"
@@ -116,59 +146,50 @@ const Login = () => {
                 </MDBCol>
               </MDBRow>
 
-              <MDBBtn type="submit" className="mb-4" block>
+              <button
+                type="submit"
+                disabled={
+                  (credentials.email === "") | (credentials.password === "")
+                }
+                className="mb-4 btn btn-primary btn-block"
+              >
                 Sign in
-              </MDBBtn>
-
-              <div className="text-center">
-                <p>
-                  Not a member? <a href="#!">Register</a>
-                </p>
-              </div>
+              </button>
             </form>
           </MDBTabsPane>
           <MDBTabsPane show={loginRegisterActive === "register"}>
-            <form onClick={handleRegister}>
-              <div className="text-center mb-3">
-                <p>Register with</p>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="facebook-f" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="google" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="twitter" />
-                </MDBBtn>
-
-                <MDBBtn floating className="mx-1">
-                  <MDBIcon fab icon="github" />
-                </MDBBtn>
-              </div>
-
-              <p className="text-center">or:</p>
-
-              <MDBInput className="mb-4" id="form8Example1" label="Name" />
-              <MDBInput className="mb-4" id="form8Example2" label="Username" />
+            <form onSubmit={handleRegister}>
               <MDBInput
                 className="mb-4"
+                id="form8Example1"
+                label="Full Name"
+                name="rName"
+                onChange={onChange}
+                value={credentials.rName}
+              />
+
+              <MDBInput
+                className="mb-4"
+                onChange={onChange}
+                value={credentials.rEmail}
                 type="email"
-                id="form8Example3"
+                name="rEmail"
                 label="Email address"
               />
               <MDBInput
                 className="mb-4"
+                onChange={onChange}
                 type="password"
-                id="form8Example4"
+                value={credentials.rPassword}
+                name="rPassword"
                 label="Password"
               />
               <MDBInput
                 className="mb-4"
+                onChange={onChange}
                 type="password"
-                id="form8Example5"
+                value={credentials.rRepeatPassword}
+                name="rRepeatPassword"
                 label="Repeat password"
               />
 
@@ -179,9 +200,18 @@ const Login = () => {
                 defaultChecked
               />
 
-              <MDBBtn type="submit" className="mb-4" block>
+              <button
+                type="submit"
+                disabled={
+                  (credentials.rPassword !== credentials.rRepeatPassword) |
+                  (credentials.rEmail === "") |
+                  (credentials.rName === "") |
+                  (credentials.rPassword === "")
+                }
+                className=" btn btn-primary btn-block mb-4"
+              >
                 Register
-              </MDBBtn>
+              </button>
             </form>
           </MDBTabsPane>
         </MDBTabsContent>
