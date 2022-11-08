@@ -8,7 +8,8 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark ">
         {/* <!-- Container wrapper --> */}
         <div className="container-fluid">
-          {/* <!-- Navbar brand --> */}
+          {/* <!-- Navbar band --> */}
+
           <Link className="navbar-brand" to="/">
             Brand
           </Link>
@@ -28,7 +29,7 @@ const Navbar = () => {
 
           {/* <!-- Collapsible wrapper --> */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-auto align-items-center mb-2 mb-lg-0">
               {/* 
         <!-- Link --> */}
               <li className="nav-item">
@@ -43,18 +44,21 @@ const Navbar = () => {
               </li>
             </ul>
 
-            {/* <!-- Icons --> */}
-            <ul className="navbar-nav d-flex flex-row me-1">
-              <li className="nav-item me-3 me-lg-0">
-                <Link className="nav-link" to="#">
-                  <i className="fas fa-shopping-cart"></i>
+            <ul className="navbar-nav d-flex flex-row justify-content-center">
+              <li className="nav-item mx-2 me-lg-0">
+                <Link className="px-3 btn btn-danger" role="button" to="/login">
+                  Login here
                 </Link>
               </li>
-              <li className="nav-item me-3 me-lg-0">
-                <Link className="nav-link" to="#">
-                  <i className="fab fa-twitter"></i>
+              {/* <li className="nav-item mx-2 me-lg-0">
+                <Link
+                  className="px-3 btn btn-success"
+                  role="button"
+                  to="/signup"
+                >
+                  SignUp Here
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
