@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { message } from "antd";
 import {
   MDBRow,
   MDBCol,
@@ -24,7 +25,6 @@ const Login = () => {
     rName: "",
   });
   let navigate = useNavigate();
-
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -53,10 +53,11 @@ const Login = () => {
     let err = json.error;
     if (json.success) {
       // save the auth token and redirect
+      message.success("Logged In Successfully");
       localStorage.setItem("token", json.authtoken);
       navigate("/");
     } else {
-      alert(err);
+      message.error(err);
     }
   };
 
@@ -83,10 +84,11 @@ const Login = () => {
     let err = json.error;
     if (json.success) {
       // save the auth token and redirect
+      message.success("Account Created Succesfully and Logged in...");
       localStorage.setItem("token", json.authtoken);
       navigate("/");
     } else {
-      alert(err);
+      message.error(err);
     }
   };
   return (
@@ -123,6 +125,7 @@ const Login = () => {
                 id="form7Example1"
                 label="Email address"
               />
+
               <MDBInput
                 className="mb-4"
                 onChange={onChange}
@@ -173,6 +176,7 @@ const Login = () => {
                 onChange={onChange}
                 value={credentials.rEmail}
                 type="email"
+                required
                 name="rEmail"
                 label="Email address"
               />
@@ -180,6 +184,7 @@ const Login = () => {
                 className="mb-4"
                 onChange={onChange}
                 type="password"
+                minLength={5}
                 value={credentials.rPassword}
                 name="rPassword"
                 label="Password"
@@ -188,6 +193,7 @@ const Login = () => {
                 className="mb-4"
                 onChange={onChange}
                 type="password"
+                minLength={5}
                 value={credentials.rRepeatPassword}
                 name="rRepeatPassword"
                 label="Repeat password"
