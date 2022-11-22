@@ -1,5 +1,6 @@
 import NoteContext from "./NoteContext";
 import { useState } from "react";
+import { message } from "antd";
 
 const NoteState = (props) => {
   const host = "http://localhost:5000";
@@ -15,8 +16,7 @@ const NoteState = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        authToken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMxNDU3ZGM0NTAyNzA0YWJlOWE1NDQzIn0sImlhdCI6MTY2MjI4NDAyNH0.0lP3cfuuYlxxaI9pgmu6XS-vTsKdindXCJNbO7fGcik",
+        authToken: localStorage.getItem("token"),
       },
     });
     const json = await response.json();
@@ -30,8 +30,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authToken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMxNDU3ZGM0NTAyNzA0YWJlOWE1NDQzIn0sImlhdCI6MTY2MjI4NDAyNH0.0lP3cfuuYlxxaI9pgmu6XS-vTsKdindXCJNbO7fGcik",
+        authToken: localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description, tag }),
     });
@@ -45,12 +44,13 @@ const NoteState = (props) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        authToken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMxNDU3ZGM0NTAyNzA0YWJlOWE1NDQzIn0sImlhdCI6MTY2MjI4NDAyNH0.0lP3cfuuYlxxaI9pgmu6XS-vTsKdindXCJNbO7fGcik",
+        authToken: localStorage.getItem("token"),
       },
     });
     const json = response.json();
     console.log(json);
+    message.warning("Notes Deleted!");
+
     const newNotes = notes.filter((note) => {
       return note._id !== id;
     });
@@ -64,8 +64,7 @@ const NoteState = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        authToken:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjMxNDU3ZGM0NTAyNzA0YWJlOWE1NDQzIn0sImlhdCI6MTY2MjI4NDAyNH0.0lP3cfuuYlxxaI9pgmu6XS-vTsKdindXCJNbO7fGcik",
+        authToken: localStorage.getItem("token"),
       },
       body: JSON.stringify({ title, description, tag }),
     });

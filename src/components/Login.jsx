@@ -54,7 +54,8 @@ const Login = () => {
     if (json.success) {
       // save the auth token and redirect
       message.success("Logged In Successfully");
-      localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("token", json.authToken);
+      // console.log(localStorage.getItem("token"));
       navigate("/");
     } else {
       message.error(err);
@@ -85,142 +86,149 @@ const Login = () => {
     if (json.success) {
       // save the auth token and redirect
       message.success("Account Created Succesfully and Logged in...");
-      localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("token", json.authToken);
       navigate("/");
     } else {
       message.error(err);
     }
   };
   return (
-    <div className="container card w-75 mt-5">
-      <div className="card-body">
-        <MDBTabs pills justify className="mb-3">
-          <MDBTabsItem>
-            <MDBTabsLink
-              onClick={() => handleLoginRegisterClick("login")}
-              active={loginRegisterActive === "login"}
-            >
-              Login
-            </MDBTabsLink>
-          </MDBTabsItem>
-          <MDBTabsItem>
-            <MDBTabsLink
-              onClick={() => handleLoginRegisterClick("register")}
-              active={loginRegisterActive === "register"}
-            >
-              Register
-            </MDBTabsLink>
-          </MDBTabsItem>
-        </MDBTabs>
+    <div>
+      <div className="text-center mt-5">
+        <h2>Welcome to secrete Dairy</h2>
+        <p className="mt-4">Login or Create a new account to continue</p>
+      </div>
 
-        <MDBTabsContent>
-          <MDBTabsPane show={loginRegisterActive === "login"}>
-            <form onSubmit={handleSubmit}>
-              <MDBInput
-                className="mb-4"
-                onChange={onChange}
-                value={credentials.email}
-                type="email"
-                name="email"
-                id="form7Example1"
-                label="Email address"
-              />
-
-              <MDBInput
-                className="mb-4"
-                onChange={onChange}
-                type="password"
-                value={credentials.password}
-                name="password"
-                id="form7Example2"
-                label="Password"
-              />
-
-              <MDBRow className="mb-4">
-                <MDBCol className="d-flex justify-content-center">
-                  <MDBCheckbox
-                    id="form7Example3"
-                    label="Remember me"
-                    defaultChecked
-                  />
-                </MDBCol>
-                <MDBCol>
-                  <a href="#!">Forgot password?</a>
-                </MDBCol>
-              </MDBRow>
-
-              <button
-                type="submit"
-                disabled={
-                  (credentials.email === "") | (credentials.password === "")
-                }
-                className="mb-4 btn btn-primary btn-block"
+      <div className="container card w-75 mt-5">
+        <div className="card-body">
+          <MDBTabs pills justify className="mb-3">
+            <MDBTabsItem>
+              <MDBTabsLink
+                onClick={() => handleLoginRegisterClick("login")}
+                active={loginRegisterActive === "login"}
               >
-                Sign in
-              </button>
-            </form>
-          </MDBTabsPane>
-          <MDBTabsPane show={loginRegisterActive === "register"}>
-            <form onSubmit={handleRegister}>
-              <MDBInput
-                className="mb-4"
-                id="form8Example1"
-                label="Full Name"
-                name="rName"
-                onChange={onChange}
-                value={credentials.rName}
-              />
-
-              <MDBInput
-                className="mb-4"
-                onChange={onChange}
-                value={credentials.rEmail}
-                type="email"
-                required
-                name="rEmail"
-                label="Email address"
-              />
-              <MDBInput
-                className="mb-4"
-                onChange={onChange}
-                type="password"
-                minLength={5}
-                value={credentials.rPassword}
-                name="rPassword"
-                label="Password"
-              />
-              <MDBInput
-                className="mb-4"
-                onChange={onChange}
-                type="password"
-                minLength={5}
-                value={credentials.rRepeatPassword}
-                name="rRepeatPassword"
-                label="Repeat password"
-              />
-
-              <MDBCheckbox
-                wrapperClass="d-flex justify-content-center mb-4"
-                id="form8Example6"
-                label="I have read and agree to the terms"
-                defaultChecked
-              />
-
-              <button
-                type="submit"
-                disabled={
-                  (credentials.rPassword !== credentials.rRepeatPassword) |
-                  (credentials.rEmail === "") |
-                  (credentials.rName === "") |
-                  (credentials.rPassword === "")
-                }
-                className=" btn btn-primary btn-block mb-4"
+                Login
+              </MDBTabsLink>
+            </MDBTabsItem>
+            <MDBTabsItem>
+              <MDBTabsLink
+                onClick={() => handleLoginRegisterClick("register")}
+                active={loginRegisterActive === "register"}
               >
                 Register
-              </button>
-            </form>
-          </MDBTabsPane>
-        </MDBTabsContent>
+              </MDBTabsLink>
+            </MDBTabsItem>
+          </MDBTabs>
+
+          <MDBTabsContent>
+            <MDBTabsPane show={loginRegisterActive === "login"}>
+              <form onSubmit={handleSubmit}>
+                <MDBInput
+                  className="mb-4"
+                  onChange={onChange}
+                  value={credentials.email}
+                  type="email"
+                  name="email"
+                  id="form7Example1"
+                  label="Email address"
+                />
+
+                <MDBInput
+                  className="mb-4"
+                  onChange={onChange}
+                  type="password"
+                  value={credentials.password}
+                  name="password"
+                  id="form7Example2"
+                  label="Password"
+                />
+
+                <MDBRow className="mb-4">
+                  <MDBCol className="d-flex justify-content-center">
+                    <MDBCheckbox
+                      id="form7Example3"
+                      label="Remember me"
+                      defaultChecked
+                    />
+                  </MDBCol>
+                  <MDBCol>
+                    <a href="#!">Forgot password?</a>
+                  </MDBCol>
+                </MDBRow>
+
+                <button
+                  type="submit"
+                  disabled={
+                    (credentials.email === "") | (credentials.password === "")
+                  }
+                  className="mb-4 btn btn-primary btn-block"
+                >
+                  Sign in
+                </button>
+              </form>
+            </MDBTabsPane>
+            <MDBTabsPane show={loginRegisterActive === "register"}>
+              <form onSubmit={handleRegister}>
+                <MDBInput
+                  className="mb-4"
+                  id="form8Example1"
+                  label="Full Name"
+                  name="rName"
+                  onChange={onChange}
+                  value={credentials.rName}
+                />
+
+                <MDBInput
+                  className="mb-4"
+                  onChange={onChange}
+                  value={credentials.rEmail}
+                  type="email"
+                  required
+                  name="rEmail"
+                  label="Email address"
+                />
+                <MDBInput
+                  className="mb-4"
+                  onChange={onChange}
+                  type="password"
+                  minLength={5}
+                  value={credentials.rPassword}
+                  name="rPassword"
+                  label="Password"
+                />
+                <MDBInput
+                  className="mb-4"
+                  onChange={onChange}
+                  type="password"
+                  minLength={5}
+                  value={credentials.rRepeatPassword}
+                  name="rRepeatPassword"
+                  label="Repeat password"
+                />
+
+                <MDBCheckbox
+                  wrapperClass="d-flex justify-content-center mb-4"
+                  id="form8Example6"
+                  label="I have read and agree to the terms"
+                  defaultChecked
+                />
+
+                <button
+                  type="submit"
+                  disabled={
+                    (credentials.rPassword !== credentials.rRepeatPassword) |
+                    (credentials.rEmail === "") |
+                    (credentials.rName === "") |
+                    (credentials.rPassword === "")
+                  }
+                  className=" btn btn-primary btn-block mb-4"
+                >
+                  Register
+                </button>
+              </form>
+            </MDBTabsPane>
+          </MDBTabsContent>
+        </div>
       </div>
     </div>
   );

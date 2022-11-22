@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import "../style/Form.scss";
+import { message } from "antd";
 import NoteContext from "../context/notes/NoteContext";
 import { MDBInput, MDBTextArea } from "mdb-react-ui-kit";
 
@@ -15,6 +16,7 @@ const Form = () => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
     setNote({ title: "", description: "", tag: "" });
+    message.success("Added successfully!");
   };
   const onChange = (e) => {
     setNote({

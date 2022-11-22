@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 // import Signup from "./components/Signup";
@@ -13,14 +12,15 @@ function App() {
       <NoteState>
         <BrowserRouter>
           <Navbar />
-          <Alert message="jello" />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/about" element={<About />}></Route>
-              <Route path="/login" element={<Login />}></Route>
-              {/* <Route path="/signup" element={<Signup />}></Route> */}
-            </Routes>
+          <div className="parent">
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/about" element={<About />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                {/* <Route path="/signup" element={<Signup />}></Route> */}
+              </Routes>
+            </div>
           </div>
         </BrowserRouter>
       </NoteState>

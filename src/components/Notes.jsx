@@ -12,8 +12,11 @@ import {
   MDBTextArea,
   MDBInput,
 } from "mdb-react-ui-kit";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
+  let navigate = useNavigate();
   const context = useContext(NoteContext);
   const { notes, getNotes, editNote } = context;
   const ref = useRef(null);
@@ -24,7 +27,12 @@ const Notes = () => {
     etag: "",
   });
   useEffect(() => {
-    getNotes();
+    if (localStorage.getItem("token")) {
+      getNotes();
+    } else {
+      navigate("/login");
+    }
+
     //eslint-disable-next-line
   }, []);
 
@@ -46,6 +54,7 @@ const Notes = () => {
     e.preventDefault();
     editNote(note.id, note.etitle, note.edescription, note.etag);
     toggleShow();
+    message.info("Updated successfully!");
   };
   const onChange = (e) => {
     setNote({
@@ -135,11 +144,11 @@ const Notes = () => {
         <h2 className="my-3">Your Notes</h2>
         <i>{notes.length === 0 && "No notes to display"}</i>
         <div className="row p-4">
-          {notes.map((note) => {
+          {notes.map((n) => {
             return (
               <NoteItem
-                notes={note}
-                key={note._id}
+                notes={n}
+                key={n._id}
                 updateNote={updateNote}
                 toggleShow={toggleShow}
               />

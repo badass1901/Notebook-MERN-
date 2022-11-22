@@ -1,7 +1,14 @@
+import { message } from "antd";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    message.error("User logged out");
+    navigate("/login");
+  };
   return (
     <>
       {/* <!-- Navbar --> */}
@@ -46,19 +53,23 @@ const Navbar = () => {
 
             <ul className="navbar-nav d-flex flex-row justify-content-center">
               <li className="nav-item mx-2 me-lg-0">
-                <Link className="px-3 btn btn-danger" role="button" to="/login">
-                  Login here
-                </Link>
+                {!localStorage.getItem("token") ? (
+                  <Link
+                    className="px-3 btn btn-primary"
+                    role="button"
+                    to="/login"
+                  >
+                    Login here
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleLogout}
+                    className="px-3 btn btn-danger"
+                  >
+                    Logout
+                  </button>
+                )}
               </li>
-              {/* <li className="nav-item mx-2 me-lg-0">
-                <Link
-                  className="px-3 btn btn-success"
-                  role="button"
-                  to="/signup"
-                >
-                  SignUp Here
-                </Link>
-              </li> */}
             </ul>
           </div>
         </div>
