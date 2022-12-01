@@ -18,7 +18,7 @@ const Navbar = () => {
           {/* <!-- Navbar band --> */}
 
           <Link className="navbar-brand" to="/">
-            Brand
+            <span className="mx-2"><font className="text-primary">S</font>ecret </span><font className="text-primary"> D</font>airy
           </Link>
 
           {/* <!-- Toggle button --> */}

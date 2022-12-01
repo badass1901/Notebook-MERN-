@@ -94,8 +94,8 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="text-center mt-5">
-        <h2>Welcome to secrete Dairy</h2>
+      <div className="text-center mt-5  font-monospace ">
+        <h1>Welcome to <font className='text-primary'>S</font>ecret <font className='text-primary'>D</font>airy</h1>
         <p className="mt-4">Login or Create a new account to continue</p>
       </div>
 
