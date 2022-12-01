@@ -94,8 +94,11 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="text-center mt-5  font-monospace ">
-        <h1>Welcome to <font className='text-primary'>S</font>ecret <font className='text-primary'>D</font>airy</h1>
+      <div className="text-center mt-5 welcome">
+        <h1>
+          Welcome to <font className="text-primary">S</font>ecret{" "}
+          <font className="text-primary">D</font>airy
+        </h1>
         <p className="mt-4">Login or Create a new account to continue</p>
       </div>
 
@@ -144,15 +147,15 @@ const Login = () => {
                 />
 
                 <MDBRow className="mb-4">
-                  <MDBCol className="d-flex justify-content-center">
+                  <MDBCol className="d-flex flex-column justify-content-center align-items-center">
                     <MDBCheckbox
                       id="form7Example3"
                       label="Remember me"
                       defaultChecked
                     />
-                  </MDBCol>
-                  <MDBCol>
-                    <a href="#!">Forgot password?</a>
+                    <div>
+                      <a href="#!">Forgot password?</a>
+                    </div>
                   </MDBCol>
                 </MDBRow>
 

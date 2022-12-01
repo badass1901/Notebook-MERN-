@@ -17,8 +17,13 @@ const Navbar = () => {
         <div className="container-fluid">
           {/* <!-- Navbar band --> */}
 
-          <Link className="navbar-brand" to="/">
-            <span className="mx-2"><font className="text-primary">S</font>ecret </span><font className="text-primary"> D</font>airy
+          <Link className="h" to="/">
+            <font size="10" className="p">
+              <font className="text-primary">S</font>
+              ecret
+              <font className="text-primary"> D</font>
+              airy
+            </font>
           </Link>
 
           {/* <!-- Toggle button --> */}
@@ -52,20 +57,13 @@ const Navbar = () => {
             </ul>
 
             <ul className="navbar-nav d-flex flex-row justify-content-center">
-              <li className="nav-item mx-2 me-lg-0">
+              <li className="nav-item mx-2 me-lg-0 btn-border">
                 {!localStorage.getItem("token") ? (
-                  <Link
-                    className="px-3 btn btn-primary"
-                    role="button"
-                    to="/login"
-                  >
-                    Login here
+                  <Link className="px-3 login-btn" role="button" to="/login">
+                    Login
                   </Link>
                 ) : (
-                  <button
-                    onClick={handleLogout}
-                    className="px-3 btn btn-danger"
-                  >
+                  <button onClick={handleLogout} className="px-3 logout-btn">
                     Logout
                   </button>
                 )}

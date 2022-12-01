@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Ms+Madi&family=Satisfy&display=swap");
 i {
   cursor: pointer;
+}
+.h {
+  font-family: "Alex Brush", cursive;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  margin: 0 10px;
+  // font-family: "Ms Madi", cursive;
+  // font-family: "Satisfy", cursive;
+}
+.welcome {
+  h1 {
+    font-family: "Ms Madi";
+    font-size: 30px;
+    font-weight: 600;
+  }
+  p {
+    font-style: italic;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+  }
+}
+.btn-border {
+  padding: 4px;
+  border-radius: 20px;
+  background: linear-gradient(rgb(0, 162, 255), rgb(1, 95, 150));
+}
+.login-btn {
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 4px 6px;
+  background: linear-gradient(rgb(0, 131, 206), rgb(0, 162, 255));
+
+  &:hover {
+    background: linear-gradient(rgb(0, 131, 206), rgb(0, 162, 255));
+    color: white;
+  }
 }
