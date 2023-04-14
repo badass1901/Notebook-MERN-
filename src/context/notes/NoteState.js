@@ -3,7 +3,7 @@ import { useState } from "react";
 import { message } from "antd";
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "https://webnotes-api.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
