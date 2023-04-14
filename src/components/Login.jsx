@@ -32,7 +32,7 @@ const Login = () => {
     setLoginRegisterActive(parameter);
   };
 
-  const host = "https://inotebook-ebgk.onrender.com";
+  const host = "https://inotebook-api-cvm6.onrender.com";
 
   // Login Here
   const handleSubmit = async (e) => {
