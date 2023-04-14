@@ -32,7 +32,7 @@ const Login = () => {
     setLoginRegisterActive(parameter);
   };
 
-  const host = "http://localhost:5000";
+  const host = "https://inotebook-ebgk.onrender.com";
 
   // Login Here
   const handleSubmit = async (e) => {
