@@ -3,7 +3,7 @@ import { useState } from "react";
 import { message } from "antd";
 
 const NoteState = (props) => {
-  const host = "https://inotebook-ebgk.onrender.com";
+  const host = "https://inotebook-api-cvm6.onrender.com";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
