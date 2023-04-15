@@ -48,24 +48,30 @@ const Navbar = () => {
                 <Link className="nav-link" to="/about">
                   About
                 </Link>
+                <div></div>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/">
                   Home
                 </Link>
+                <div></div>
               </li>
             </ul>
 
             <ul className="navbar-nav d-flex flex-row justify-content-center">
               <li className="nav-item mx-2 me-lg-0 btn-border">
                 {!localStorage.getItem("token") ? (
-                  <Link className="px-3 login-btn" role="button" to="/login">
-                    Login
-                  </Link>
+                  <li className="nav-item mx-2 me-lg-0 btn-border-1">
+                    <Link className="px-3 login-btn" role="button" to="/login">
+                      Login
+                    </Link>
+                  </li>
                 ) : (
-                  <button onClick={handleLogout} className="px-3 logout-btn">
-                    Logout
-                  </button>
+                  <li className="nav-item mx-2 me-lg-0 btn-border-2">
+                    <button onClick={handleLogout} className="px-3 logout-btn">
+                      Logout
+                    </button>
+                  </li>
                 )}
               </li>
             </ul>

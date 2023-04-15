@@ -2,6 +2,9 @@
 i {
   cursor: pointer;
 }
+.parent {
+  height: 100vh;
+}
 .h {
   font-family: "Alex Brush", cursive;
   text-decoration: none;
@@ -16,6 +19,17 @@ i {
     font-family: "Ms Madi";
     font-size: 30px;
     font-weight: 600;
+    // color: transparent;
+    position: relative;
+    animation: wel 2s 1;
+    animation-direction: alternate;
+    @keyframes wel {
+      0% {
+        color: transparent;
+      }
+      50% {
+      }
+    }
   }
   p {
     font-style: italic;
@@ -23,11 +37,33 @@ i {
     font-family: "Times New Roman", Times, serif;
   }
 }
-.btn-border {
+.btn-border-1 {
   padding: 4px;
   border-radius: 20px;
-  background: linear-gradient(rgb(0, 162, 255), rgb(1, 95, 150));
+  background: linear-gradient(rgb(0, 115, 255), rgb(1, 83, 183));
 }
+.btn-border-2 {
+  padding: 4px;
+  border-radius: 20px;
+  background: linear-gradient(rgb(255, 0, 60), rgb(179, 1, 19));
+}
+.logout-btn {
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  padding: 4px 6px;
+  background: linear-gradient(rgb(179, 1, 19), rgb(255, 0, 60));
+
+  &:hover {
+    background: linear-gradient(rgb(195, 3, 22), rgb(253, 17, 72));
+    color: rgb(255, 255, 255);
+    transition: 400ms;
+  }
+}
+
 .login-btn {
   border-radius: 20px;
   font-weight: 600;
@@ -35,10 +71,33 @@ i {
   text-decoration: none;
   color: #fff;
   padding: 4px 6px;
-  background: linear-gradient(rgb(0, 131, 206), rgb(0, 162, 255));
+  background: linear-gradient(rgb(1, 83, 183), rgb(0, 115, 255));
 
   &:hover {
-    background: linear-gradient(rgb(0, 131, 206), rgb(0, 162, 255));
+    background: linear-gradient(rgb(3, 87, 191), rgb(20, 126, 255));
     color: white;
+    transition: 400ms;
+  }
+}
+.nav-item:hover {
+  // transition: 200ms;
+  // border-bottom: 2px solid white;
+  div {
+    width: 4px;
+    height: 2px;
+    background: white;
+    position: relative;
+    animation: ani 2s 1;
+    animation-direction: alternate;
+  }
+  @keyframes ani {
+    0% {
+      background-color: rgb(255, 255, 255);
+      width: 0px;
+    }
+    50% {
+      background: rgb(255, 255, 255);
+      width: 60px;
+    }
   }
 }
