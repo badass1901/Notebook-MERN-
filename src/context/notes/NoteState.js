@@ -3,8 +3,7 @@ import { useState } from "react";
 import { message } from "antd";
 
 const NoteState = (props) => {
-  const host =
-    "https://notebook-backend.up.railway.app" || "http://localhost:5000";
+  const host = "http://localhost:5000";
   const notesInitial = [];
   const [notes, setNotes] = useState(notesInitial);
 
